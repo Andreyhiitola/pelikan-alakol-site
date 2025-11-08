@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="База отдыха Пеликан на озере Алаколь - семейный отдых, деревянные домики, бассейны, анимация">
+    <meta name="keywords" content="Алаколь, база отдыха, Пеликан, отдых в Казахстане, озеро Алаколь">
+    <title>Пеликан Алаколь - База отдыха на озере Алаколь</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🐦</span>
+                    <span class="logo-text">Пеликан Алаколь</span>
+                </div>
+                <nav class="nav" id="nav">
+                    <a href="#home" class="nav-link active">Главная</a>
+                    <a href="#live-info" class="nav-link">Прямо сейчас</a>
+                    <a href="#accommodation" class="nav-link">Размещение</a>
+                    <a href="#infrastructure" class="nav-link">Инфраструктура</a>
+                    <a href="#activities" class="nav-link">Активности</a>
+                    <a href="#offers" class="nav-link">Акции</a>
+                    <a href="#contacts" class="nav-link">Контакты</a>
+                </nav>
+                <button class="btn btn-primary" onclick="scrollToSection('contacts')">Забронировать</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Добро пожаловать на озеро Алаколь</h1>
+                <p class="hero-subtitle">Центр семейного отдыха в окружении природы</p>
+                <p class="hero-description">
+                    Более 5000 деревьев, комфортные домики, детская анимация и все для незабываемого отдыха
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-lg" onclick="scrollToSection('accommodation')">
+                        Выбрать номер
+                    </button>
+                    <button class="btn btn-secondary btn-lg" onclick="scrollToSection('contacts')">
+                        Связаться с нами
+                    </button>
+                </div>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <span class="feature-icon">🏖️</span>
+                        <span>Галечный пляж</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="feature-icon">🏊</span>
+                        <span>2 бассейна</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="feature-icon">🎪</span>
+                        <span>Детская анимация</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="feature-icon">🌳</span>
+                        <span>5000+ деревьев</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Info Section -->
+    <section id="live-info" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Прямо сейчас на базе</h2>
+                <p class="section-subtitle">Актуальная информация в реальном времени</p>
+            </div>
+
+            <!-- Weather Widget -->
+            <div class="weather-widget" id="weather-widget">
+                <div class="weather-loading">Загрузка погоды...</div>
+            </div>
+
+            <!-- Webcams -->
+            <div class="webcams-section">
+                <h3 class="subsection-title">📹 Веб-камеры базы</h3>
+                <div class="webcams-grid">
+                    <div class="webcam-card">
+                        <div class="webcam-title">Пляж и озеро Алаколь</div>
+                        <div class="webcam-frame">
+                            <div class="webcam-placeholder">
+                                <p>📹 Веб-камера будет доступна в ближайшее время</p>
+                                <p style="margin-top: 1rem; font-size: 0.9rem;">Здесь будет трансляция пляжа в реальном времени</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="webcam-card">
+                        <div class="webcam-title">Территория базы</div>
+                        <div class="webcam-frame">
+                            <div class="webcam-placeholder">
+                                <p>📹 Веб-камера будет доступна в ближайшее время</p>
+                                <p style="margin-top: 1rem; font-size: 0.9rem;">Здесь будет трансляция территории базы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Map -->
+            <div class="map-section">
+                <h3 class="subsection-title">🗺️ Интерактивная карта базы</h3>
+                <div class="interactive-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.5!2d81.5714!3d45.955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDU3JzE4LjAiTiA4McKwMzQnMTcuMCJF!5e1!3m2!1sru!2skz!4v1234567890"
+                        width="100%" 
+                        height="500" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodation Section -->
+    <section id="accommodation" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Варианты размещения</h2>
+                <p class="section-subtitle">Выберите идеальный вариант для вашей семьи</p>
+            </div>
+            <div id="accommodation-list" class="cards-grid">
+                <!-- Загружается из accommodation.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure Section -->
+    <section id="infrastructure" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Инфраструктура</h2>
+                <p class="section-subtitle">Все для комфортного отдыха</p>
+            </div>
+            <div id="infrastructure-list" class="features-grid">
+                <!-- Загружается из infrastructure.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Расписание мероприятий</h2>
+                <p class="section-subtitle">Каждый день насыщен интересными событиями</p>
+            </div>
+            <div id="activities-list" class="timeline">
+                <!-- Загружается из activities.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section id="offers" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Специальные предложения</h2>
+                <p class="section-subtitle">Экономьте на отдыхе с нашими акциями</p>
+            </div>
+            <div id="offers-list" class="offers-grid">
+                <!-- Загружается из offers.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Контакты</h2>
+                <p class="section-subtitle">Мы всегда рады вам помочь</p>
+            </div>
+            <div id="contacts-info" class="contacts-grid">
+                <!-- Загружается из contacts.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О нас</h3>
+                    <p>Центр семейного отдыха "Пеликан" на озере Алаколь - ваш идеальный отдых в окружении природы</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>📞 +7 (727) 292-78-99</p>
+                    <p>📧 pelikan-08@mail.ru</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Режим работы</h3>
+                    <p>Сезон: Июнь - Сентябрь</p>
+                    <p>Круглосуточно</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 База отдыха "Пеликан". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
