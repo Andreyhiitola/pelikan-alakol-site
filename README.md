@@ -19,6 +19,7 @@ PROJECT.md
 **Репозиторий:** https://github.com/Andreyhiitola/pelikan-alakol-site  
 **URL сайта:** https://andreyhiitola.github.io/pelikan-alakol-site  
 
+
 **Что сделано:**
 - [x] Структура репозитория
 - [x] HTML/CSS/JS разделены по файлам
