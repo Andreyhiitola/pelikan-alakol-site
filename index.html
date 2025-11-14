@@ -2,859 +2,803 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="База отдыха Пеликан на озере Алаколь - семейный отдых, деревянные домики, бассейны, анимация">
-    <title>Пеликан Алаколь - База отдыха на озере Алаколь</title>
-    <style>
-        /* ============================================
-           Переменные и базовые стили
-           ============================================ */
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary: #10b981;
-            --secondary-dark: #059669;
-            --accent: #f59e0b;
-            --text-dark: #1f2937;
-            --text-medium: #4b5563;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
-            --bg-white: #ffffff;
-            --border-color: #e5e7eb;
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-            --radius-sm: 6px;
-            --radius: 12px;
-            --radius-lg: 16px;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-            line-height: 1.6;
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            background: var(--bg-white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-        }
-
-        .nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--primary);
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--primary);
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 12px 28px;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-block;
-            text-align: center;
-        }
-
-        .btn-lg {
-            padding: 16px 36px;
-            font-size: 1.1rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 120px 0 80px;
-            position: relative;
-        }
-
-        .hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.95;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-
-        .hero-features {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .feature-icon {
-            font-size: 1.5rem;
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-alt {
-            background: var(--bg-white);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card-type {
-            display: inline-block;
-            padding: 4px 12px;
-            background: var(--secondary);
-            color: white;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .card-description {
-            color: var(--text-medium);
-            margin-bottom: 1rem;
-        }
-
-        .card-info-item {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-amenities {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .amenity-tag {
-            padding: 4px 12px;
-            background: var(--bg-light);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--text-medium);
-        }
-
-        .card-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .feature-icon-large {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-description {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Timeline */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 1.5rem;
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary);
-        }
-
-        .timeline-time {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary);
-            min-width: 120px;
-        }
-
-        .timeline-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-location {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Offers */
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .offer-card {
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--accent);
-            position: relative;
-        }
-
-        .offer-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: var(--accent);
-            color: white;
-            border-radius: 20px;
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .offer-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        /* Contacts */
-        .contacts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-card {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-type {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .contact-detail {
-            color: var(--text-medium);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 3rem 0 1rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .footer-section p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-bottom p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .nav {
-                display: none;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .cards-grid,
-            .features-grid,
-            .offers-grid,
-            .contacts-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                flex-direction: column;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="База отдыха Пеликан на озере Алаколь - семейный отдых, деревянные домики, бассейны, анимация">
+<title>Пеликан Алаколь - База отдыха на озере Алаколь</title>
+<style>
+/* ============================================
+Переменные и базовые стили
+============================================ */
+:root {
+--primary: #3b82f6;
+--primary-dark: #2563eb;
+--secondary: #10b981;
+--secondary-dark: #059669;
+--accent: #f59e0b;
+--text-dark: #1f2937;
+--text-medium: #4b5563;
+--text-light: #6b7280;
+--bg-light: #f9fafb;
+--bg-white: #ffffff;
+--border-color: #e5e7eb;
+--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+--shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+--shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+--radius-sm: 6px;
+--radius: 12px;
+--radius-lg: 16px;
+--transition: all 0.3s ease;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html {
+scroll-behavior: smooth;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+color: var(--text-dark);
+background-color: var(--bg-light);
+line-height: 1.6;
+font-size: 16px;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+/* Header */
+.header {
+background: var(--bg-white);
+box-shadow: var(--shadow);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+.header-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 0;
+}
+.logo {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--primary);
+}
+.logo-icon {
+font-size: 2rem;
+}
+.nav {
+display: flex;
+gap: 2rem;
+align-items: center;
+}
+.nav-link {
+color: var(--text-dark);
+text-decoration: none;
+font-weight: 500;
+font-size: 0.95rem;
+transition: var(--transition);
+position: relative;
+}
+.nav-link:hover,
+.nav-link.active {
+color: var(--primary);
+}
+.nav-link.active::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+right: 0;
+height: 2px;
+background: var(--primary);
+}
+/* Buttons */
+.btn {
+padding: 12px 28px;
+border: none;
+border-radius: var(--radius-sm);
+font-size: 1rem;
+font-weight: 600;
+cursor: pointer;
+transition: var(--transition);
+display: inline-block;
+text-align: center;
+text-decoration: none;
+}
+.btn-lg {
+padding: 16px 36px;
+font-size: 1.1rem;
+}
+.btn-primary {
+background: var(--primary);
+color: white;
+}
+.btn-primary:hover {
+background: var(--primary-dark);
+transform: translateY(-2px);
+box-shadow: var(--shadow-md);
+}
+.btn-secondary {
+background: transparent;
+color: white;
+border: 2px solid white;
+}
+.btn-secondary:hover {
+background: white;
+color: var(--primary);
+}
+.btn-contact {
+background: var(--secondary);
+color: white;
+padding: 10px 20px;
+font-size: 0.95rem;
+width: 100%;
+margin-top: 8px;
+}
+.btn-contact:hover {
+background: var(--secondary-dark);
+transform: translateY(-2px);
+box-shadow: var(--shadow-md);
+}
+/* Hero Section */
+.hero {
+background: linear-gradient(135deg, var(--primary), var(--secondary));
+color: white;
+padding: 120px 0 80px;
+position: relative;
+}
+.hero-content {
+text-align: center;
+position: relative;
+z-index: 1;
+}
+.hero-title {
+font-size: 3.5rem;
+font-weight: 800;
+margin-bottom: 1rem;
+line-height: 1.2;
+}
+.hero-subtitle {
+font-size: 1.5rem;
+margin-bottom: 1rem;
+opacity: 0.95;
+}
+.hero-description {
+font-size: 1.1rem;
+margin-bottom: 2.5rem;
+opacity: 0.9;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+}
+.hero-buttons {
+display: flex;
+gap: 1rem;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 3rem;
+}
+.hero-features {
+display: flex;
+gap: 2rem;
+justify-content: center;
+flex-wrap: wrap;
+padding-top: 2rem;
+border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.hero-feature {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+font-size: 1rem;
+}
+.feature-icon {
+font-size: 1.5rem;
+}
+/* Sections */
+.section {
+padding: 80px 0;
+}
+.section-alt {
+background: var(--bg-white);
+}
+.section-header {
+text-align: center;
+margin-bottom: 4rem;
+}
+.section-title {
+font-size: 2.5rem;
+font-weight: 700;
+color: var(--text-dark);
+margin-bottom: 0.5rem;
+}
+.section-subtitle {
+font-size: 1.1rem;
+color: var(--text-light);
+}
+/* Cards Grid */
+.cards-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 2rem;
+}
+.card {
+background: var(--bg-white);
+border-radius: var(--radius);
+padding: 2rem;
+box-shadow: var(--shadow-md);
+transition: var(--transition);
+border: 1px solid var(--border-color);
+}
+.card:hover {
+transform: translateY(-6px);
+box-shadow: var(--shadow-lg);
+}
+.card-type {
+display: inline-block;
+padding: 4px 12px;
+background: var(--secondary);
+color: white;
+border-radius: 20px;
+font-size: 0.85rem;
+font-weight: 600;
+margin-bottom: 1rem;
+}
+.card-title {
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--primary);
+margin-bottom: 0.5rem;
+}
+.card-description {
+color: var(--text-medium);
+margin-bottom: 1rem;
+}
+.card-info-item {
+color: var(--text-light);
+font-size: 0.95rem;
+margin-bottom: 0.5rem;
+}
+.card-amenities {
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+margin-bottom: 1.5rem;
+}
+.amenity-tag {
+padding: 4px 12px;
+background: var(--bg-light);
+border-radius: 20px;
+font-size: 0.85rem;
+color: var(--text-medium);
+}
+.card-price {
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--primary);
+margin-bottom: 1rem;
+}
+/* Features Grid */
+.features-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 2rem;
+}
+.feature-card {
+background: var(--bg-white);
+padding: 2rem;
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+text-align: center;
+transition: var(--transition);
+}
+.feature-card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-md);
+}
+.feature-icon-large {
+font-size: 3rem;
+margin-bottom: 1rem;
+}
+.feature-title {
+font-size: 1.25rem;
+font-weight: 700;
+color: var(--text-dark);
+margin-bottom: 0.5rem;
+}
+.feature-description {
+color: var(--text-light);
+font-size: 0.95rem;
+}
+/* Timeline */
+.timeline {
+display: flex;
+flex-direction: column;
+gap: 2rem;
+max-width: 800px;
+margin: 0 auto;
+}
+.timeline-item {
+display: flex;
+gap: 1.5rem;
+background: var(--bg-white);
+padding: 2rem;
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+border-left: 4px solid var(--primary);
+}
+.timeline-time {
+font-size: 1.1rem;
+font-weight: 700;
+color: var(--primary);
+min-width: 120px;
+}
+.timeline-title {
+font-size: 1.25rem;
+font-weight: 700;
+color: var(--text-dark);
+margin-bottom: 0.5rem;
+}
+.timeline-location {
+color: var(--text-light);
+font-size: 0.9rem;
+margin-bottom: 0.5rem;
+}
+/* Offers */
+.offers-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 2rem;
+}
+.offer-card {
+background: var(--bg-white);
+border-radius: var(--radius);
+padding: 2rem;
+box-shadow: var(--shadow);
+border: 2px solid var(--accent);
+position: relative;
+}
+.offer-badge {
+display: inline-block;
+padding: 8px 16px;
+background: var(--accent);
+color: white;
+border-radius: 20px;
+font-size: 1rem;
+font-weight: 700;
+margin-bottom: 1rem;
+}
+.offer-title {
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--text-dark);
+margin-bottom: 1rem;
+}
+/* Contacts */
+.contacts-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+}
+.contact-card {
+background: var(--bg-white);
+padding: 2rem;
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+display: flex;
+flex-direction: column;
+}
+.contact-icon {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+}
+.contact-type {
+font-size: 1.25rem;
+font-weight: 700;
+color: var(--primary);
+margin-bottom: 1rem;
+}
+.contact-detail {
+color: var(--text-medium);
+font-size: 0.95rem;
+margin-bottom: 0.5rem;
+}
+.contact-buttons {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+margin-top: auto;
+padding-top: 1rem;
+border-top: 1px solid var(--border-color);
+}
+/* Footer */
+.footer {
+background: var(--text-dark);
+color: white;
+padding: 3rem 0 1rem;
+margin-top: 4rem;
+}
+.footer-content {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 2rem;
+margin-bottom: 2rem;
+}
+.footer-section h3 {
+font-size: 1.25rem;
+margin-bottom: 1rem;
+color: var(--primary);
+}
+.footer-section p {
+color: rgba(255, 255, 255, 0.8);
+font-size: 0.95rem;
+line-height: 1.8;
+}
+.footer-bottom {
+text-align: center;
+padding-top: 2rem;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-bottom p {
+color: rgba(255, 255, 255, 0.6);
+font-size: 0.9rem;
+}
+/* Responsive */
+@media (max-width: 768px) {
+.hero-title {
+font-size: 2rem;
+}
+.hero-subtitle {
+font-size: 1.2rem;
+}
+.nav {
+display: none;
+}
+.section-title {
+font-size: 2rem;
+}
+.cards-grid,
+.features-grid,
+.offers-grid,
+.contacts-grid {
+grid-template-columns: 1fr;
+}
+.timeline-item {
+flex-direction: column;
+}
+}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <span class="logo-icon">🐦</span>
-                    <span class="logo-text">Пеликан Алаколь</span>
-                </div>
-                <nav class="nav">
-                    <a href="#home" class="nav-link active">Главная</a>
-                    <a href="#accommodation" class="nav-link">Размещение</a>
-                    <a href="#infrastructure" class="nav-link">Инфраструктура</a>
-                    <a href="#activities" class="nav-link">Активности</a>
-                    <a href="#offers" class="nav-link">Акции</a>
-                    <a href="#contacts" class="nav-link">Контакты</a>
-                </nav>
-                <button class="btn btn-primary">Забронировать</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Добро пожаловать на озеро Алаколь</h1>
-                <p class="hero-subtitle">Центр семейного отдыха в окружении природы</p>
-                <p class="hero-description">
-                    Более 5000 деревьев, комфортные домики, детская анимация и все для незабываемого отдыха
-                </p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary btn-lg">Выбрать номер</button>
-                    <button class="btn btn-secondary btn-lg">Связаться с нами</button>
-                </div>
-                <div class="hero-features">
-                    <div class="hero-feature">
-                        <span class="feature-icon">🏖️</span>
-                        <span>Галечный пляж</span>
-                    </div>
-                    <div class="hero-feature">
-                        <span class="feature-icon">🏊</span>
-                        <span>2 бассейна</span>
-                    </div>
-                    <div class="hero-feature">
-                        <span class="feature-icon">🎪</span>
-                        <span>Детская анимация</span>
-                    </div>
-                    <div class="hero-feature">
-                        <span class="feature-icon">🌳</span>
-                        <span>5000+ деревьев</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Accommodation Section -->
-    <section id="accommodation" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Варианты размещения</h2>
-                <p class="section-subtitle">Выберите идеальный вариант для вашей семьи</p>
-            </div>
-            <div class="cards-grid">
-                <div class="card">
-                    <span class="card-type">Эконом</span>
-                    <h3 class="card-title">Эконом домики</h3>
-                    <p class="card-description">Уютные деревянные домики для бюджетного отдыха</p>
-                    <p class="card-info-item">👥 2-4 человека</p>
-                    <div class="card-amenities">
-                        <span class="amenity-tag">Кровати</span>
-                        <span class="amenity-tag">Столик</span>
-                        <span class="amenity-tag">Розетка</span>
-                        <span class="amenity-tag">Общий санузел</span>
-                    </div>
-                    <div class="card-price">от 8000 ₸/сутки</div>
-                    <button class="btn btn-primary" style="width: 100%;">Забронировать</button>
-                </div>
-
-                <div class="card">
-                    <span class="card-type">Стандарт</span>
-                    <h3 class="card-title">Стандартные домики</h3>
-                    <p class="card-description">Комфортные номера со всеми удобствами</p>
-                    <p class="card-info-item">👥 2-4 человека</p>
-                    <div class="card-amenities">
-                        <span class="amenity-tag">Кровати</span>
-                        <span class="amenity-tag">Кондиционер</span>
-                        <span class="amenity-tag">Телевизор</span>
-                        <span class="amenity-tag">Холодильник</span>
-                        <span class="amenity-tag">Санузел</span>
-                    </div>
-                    <div class="card-price">от 15000 ₸/сутки</div>
-                    <button class="btn btn-primary" style="width: 100%;">Забронировать</button>
-                </div>
-
-                <div class="card">
-                    <span class="card-type">Коттедж</span>
-                    <h3 class="card-title">Семейные коттеджи</h3>
-                    <p class="card-description">Просторные коттеджи для большой семьи</p>
-                    <p class="card-info-item">👥 4-8 человек</p>
-                    <div class="card-amenities">
-                        <span class="amenity-tag">Несколько комнат</span>
-                        <span class="amenity-tag">Кондиционер</span>
-                        <span class="amenity-tag">Телевизор</span>
-                        <span class="amenity-tag">Кухня</span>
-                        <span class="amenity-tag">2 санузла</span>
-                        <span class="amenity-tag">Терраса</span>
-                    </div>
-                    <div class="card-price">от 35000 ₸/сутки</div>
-                    <button class="btn btn-primary" style="width: 100%;">Забронировать</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Infrastructure Section -->
-    <section id="infrastructure" class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Инфраструктура</h2>
-                <p class="section-subtitle">Все для комфортного отдыха</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon-large">🌳</div>
-                    <h3 class="feature-title">Зеленая территория</h3>
-                    <p class="feature-description">Более 5000 деревьев и кустарников, ландшафтный дизайн</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-large">🏖️</div>
-                    <h3 class="feature-title">Пляж</h3>
-                    <p class="feature-description">Галечный пляж на косе, 500м от базы или паром</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-large">🏊</div>
-                    <h3 class="feature-title">Бассейны</h3>
-                    <p class="feature-description">2 подогреваемых бассейна с лежаками</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-large">🎪</div>
-                    <h3 class="feature-title">Детская зона</h3>
-                    <p class="feature-description">Анимация, площадки, вечернее кино</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-large">🍽️</div>
-                    <h3 class="feature-title">Столовая</h3>
-                    <p class="feature-description">Большой выбор блюд, кофе-бар</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-large">🧖</div>
-                    <h3 class="feature-title">Сауны</h3>
-                    <p class="feature-description">2 сауны на 3-5 человек</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Activities Section -->
-    <section id="activities" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Расписание мероприятий</h2>
-                <p class="section-subtitle">Каждый день насыщен интересными событиями</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-time">10:00-11:00</div>
-                    <div>
-                        <h3 class="timeline-title">Утренняя анимация</h3>
-                        <p class="timeline-location">📍 Детская площадка</p>
-                        <p>Веселые игры и зарядка для детей</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">11:00-12:00</div>
-                    <div>
-                        <h3 class="timeline-title">Аквааэробика</h3>
-                        <p class="timeline-location">📍 Бассейн</p>
-                        <p>Занятия в воде для всей семьи</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">15:00-17:00</div>
-                    <div>
-                        <h3 class="timeline-title">Пляжные игры</h3>
-                        <p class="timeline-location">📍 Пляж</p>
-                        <p>Волейбол, бадминтон, активные игры</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">20:00-22:00</div>
-                    <div>
-                        <h3 class="timeline-title">Вечерний кинотеатр</h3>
-                        <p class="timeline-location">📍 Летняя площадка</p>
-                        <p>Семейные фильмы под открытым небом</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Offers Section -->
-    <section id="offers" class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Специальные предложения</h2>
-                <p class="section-subtitle">Экономьте на отдыхе с нашими акциями</p>
-            </div>
-            <div class="offers-grid">
-                <div class="offer-card">
-                    <div class="offer-badge">Скидка 15%</div>
-                    <h3 class="offer-title">Раннее бронирование</h3>
-                    <p class="card-description">Бронируйте отдых за 2 месяца и получите скидку 15% на проживание</p>
-                    <p class="contact-detail" style="font-style: italic;">Условия: Применяется при бронировании от 7 дней</p>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-badge">Дети до 5 лет бесплатно</div>
-                    <h3 class="offer-title">Семейный пакет</h3>
-                    <p class="card-description">При размещении семьи с детьми, дети до 5 лет проживают бесплатно</p>
-                    <p class="contact-detail" style="font-style: italic;">Условия: Без дополнительного места</p>
-                </div>
-                <div class="offer-card">
-                    <div class="offer-badge">Скидка 20%</div>
-                    <h3 class="offer-title">Длительное проживание</h3>
-                    <p class="card-description">При бронировании от 14 дней получите скидку 20%</p>
-                    <p class="contact-detail" style="font-style: italic;">Условия: На все типы размещения</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacts Section -->
-    <section id="contacts" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Контакты</h2>
-                <p class="section-subtitle">Мы всегда рады вам помочь</p>
-            </div>
-            <div class="contacts-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">🏢</div>
-                    <h3 class="contact-type">Офис в Алматы</h3>
-                    <p class="contact-detail">📍 ул. Досмухамедова, 89, офис 101/1</p>
-                    <p class="contact-detail">📞 +7 (727) 292-78-99</p>
-                    <p class="contact-detail">📱 +7 705 806 78 33</p>
-                    <p class="contact-detail">📧 pelikan-08@mail.ru</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">🏖️</div>
-                    <h3 class="contact-type">База отдыха</h3>
-                    <p class="contact-detail">📍 пос. Акши, озеро Алаколь</p>
-                    <p class="contact-detail">📞 +7 (72833) 30002</p>
-                    <p class="contact-detail">🗺️ N 45°57'18" E 81°34'17"</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">🚗</div>
-                    <h3 class="contact-type">Как добраться</h3>
-                    <p class="contact-detail">🚗 От Алматы: 670 км</p>
-                    <p class="contact-detail">🚗 От Талдыкоргана: 390 км</p>
-                    <p class="contact-detail">🚗 От Учарала: 65 км</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>О нас</h3>
-                    <p>Центр семейного отдыха "Пеликан" на озере Алаколь - ваш идеальный отдых в окружении природы</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Контакты</h3>
-                    <p>📞 +7 (727) 292-78-99</p>
-                    <p>📧 pelikan-08@mail.ru</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Режим работы</h3>
-                    <p>Сезон: Июнь - Сентябрь</p>
-                    <p>Круглосуточно</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 База отдыха "Пеликан". Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Активная ссылка при скролле
-        function updateActiveLink() {
-            const sections = document.querySelectorAll('.section, .hero');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveLink);
-    </script>
+<!-- Header -->
+<header class="header">
+<div class="container">
+<div class="header-content">
+<div class="logo">
+<span class="logo-icon">🐦</span>
+<span class="logo-text">Пеликан Алаколь</span>
+</div>
+<nav class="nav">
+<a href="#home" class="nav-link active">Главная</a>
+<a href="#accommodation" class="nav-link">Размещение</a>
+<a href="#infrastructure" class="nav-link">Инфраструктура</a>
+<a href="#activities" class="nav-link">Активности</a>
+<a href="#offers" class="nav-link">Акции</a>
+<a href="#contacts" class="nav-link">Контакты</a>
+</nav>
+<button class="btn btn-primary">Забронировать</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section id="home" class="hero">
+<div class="container">
+<div class="hero-content">
+<h1 class="hero-title">Добро пожаловать на озеро Алаколь</h1>
+<p class="hero-subtitle">Центр семейного отдыха в окружении природы</p>
+<p class="hero-description">
+Более 5000 деревьев, комфортные домики, детская анимация и все для незабываемого отдыха
+</p>
+<div class="hero-buttons">
+<button class="btn btn-primary btn-lg">Выбрать номер</button>
+<button class="btn btn-secondary btn-lg">Связаться с нами</button>
+</div>
+<div class="hero-features">
+<div class="hero-feature">
+<span class="feature-icon">🏖️</span>
+<span>Галечный пляж</span>
+</div>
+<div class="hero-feature">
+<span class="feature-icon">🏊</span>
+<span>2 бассейна</span>
+</div>
+<div class="hero-feature">
+<span class="feature-icon">🎪</span>
+<span>Детская анимация</span>
+</div>
+<div class="hero-feature">
+<span class="feature-icon">🌳</span>
+<span>5000+ деревьев</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Accommodation Section -->
+<section id="accommodation" class="section">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Варианты размещения</h2>
+<p class="section-subtitle">Выберите идеальный вариант для вашей семьи</p>
+</div>
+<div class="cards-grid">
+<div class="card">
+<span class="card-type">Эконом</span>
+<h3 class="card-title">Эконом домики</h3>
+<p class="card-description">Уютные деревянные домики для бюджетного отдыха</p>
+<p class="card-info-item">👥 2-4 человека</p>
+<div class="card-amenities">
+<span class="amenity-tag">Кровати</span>
+<span class="amenity-tag">Столик</span>
+<span class="amenity-tag">Розетка</span>
+<span class="amenity-tag">Общий санузел</span>
+</div>
+<div class="card-price">от 8000 ₸/сутки</div>
+<button class="btn btn-primary" style="width: 100%;">Забронировать</button>
+</div>
+<div class="card">
+<span class="card-type">Стандарт</span>
+<h3 class="card-title">Стандартные домики</h3>
+<p class="card-description">Комфортные номера со всеми удобствами</p>
+<p class="card-info-item">👥 2-4 человека</p>
+<div class="card-amenities">
+<span class="amenity-tag">Кровати</span>
+<span class="amenity-tag">Кондиционер</span>
+<span class="amenity-tag">Телевизор</span>
+<span class="amenity-tag">Холодильник</span>
+<span class="amenity-tag">Санузел</span>
+</div>
+<div class="card-price">от 15000 ₸/сутки</div>
+<button class="btn btn-primary" style="width: 100%;">Забронировать</button>
+</div>
+<div class="card">
+<span class="card-type">Коттедж</span>
+<h3 class="card-title">Семейные коттеджи</h3>
+<p class="card-description">Просторные коттеджи для большой семьи</p>
+<p class="card-info-item">👥 4-8 человек</p>
+<div class="card-amenities">
+<span class="amenity-tag">Несколько комнат</span>
+<span class="amenity-tag">Кондиционер</span>
+<span class="amenity-tag">Телевизор</span>
+<span class="amenity-tag">Кухня</span>
+<span class="amenity-tag">2 санузла</span>
+<span class="amenity-tag">Терраса</span>
+</div>
+<div class="card-price">от 35000 ₸/сутки</div>
+<button class="btn btn-primary" style="width: 100%;">Забронировать</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Infrastructure Section -->
+<section id="infrastructure" class="section section-alt">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Инфраструктура</h2>
+<p class="section-subtitle">Все для комфортного отдыха</p>
+</div>
+<div class="features-grid">
+<div class="feature-card">
+<div class="feature-icon-large">🌳</div>
+<h3 class="feature-title">Зеленая территория</h3>
+<p class="feature-description">Более 5000 деревьев и кустарников, ландшафтный дизайн</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon-large">🏖️</div>
+<h3 class="feature-title">Пляж</h3>
+<p class="feature-description">Галечный пляж на косе, 500м от базы или паром</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon-large">🏊</div>
+<h3 class="feature-title">Бассейны</h3>
+<p class="feature-description">2 подогреваемых бассейна с лежаками</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon-large">🎪</div>
+<h3 class="feature-title">Детская зона</h3>
+<p class="feature-description">Анимация, площадки, вечернее кино</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon-large">🍽️</div>
+<h3 class="feature-title">Столовая</h3>
+<p class="feature-description">Большой выбор блюд, кофе-бар</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon-large">🧖</div>
+<h3 class="feature-title">Сауны</h3>
+<p class="feature-description">2 сауны на 3-5 человек</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Activities Section -->
+<section id="activities" class="section">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Расписание мероприятий</h2>
+<p class="section-subtitle">Каждый день насыщен интересными событиями</p>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-time">10:00-11:00</div>
+<div>
+<h3 class="timeline-title">Утренняя анимация</h3>
+<p class="timeline-location">📍 Детская площадка</p>
+<p>Веселые игры и зарядка для детей</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-time">11:00-12:00</div>
+<div>
+<h3 class="timeline-title">Аквааэробика</h3>
+<p class="timeline-location">📍 Бассейн</p>
+<p>Занятия в воде для всей семьи</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-time">15:00-17:00</div>
+<div>
+<h3 class="timeline-title">Пляжные игры</h3>
+<p class="timeline-location">📍 Пляж</p>
+<p>Волейбол, бадминтон, активные игры</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-time">20:00-22:00</div>
+<div>
+<h3 class="timeline-title">Вечерний кинотеатр</h3>
+<p class="timeline-location">📍 Летняя площадка</p>
+<p>Семейные фильмы под открытым небом</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Offers Section -->
+<section id="offers" class="section section-alt">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Специальные предложения</h2>
+<p class="section-subtitle">Экономьте на отдыхе с нашими акциями</p>
+</div>
+<div class="offers-grid">
+<div class="offer-card">
+<div class="offer-badge">Скидка 15%</div>
+<h3 class="offer-title">Раннее бронирование</h3>
+<p class="card-description">Бронируйте отдых за 2 месяца и получите скидку 15% на проживание</p>
+<p class="contact-detail" style="font-style: italic;">Условия: Применяется при бронировании от 7 дней</p>
+</div>
+<div class="offer-card">
+<div class="offer-badge">Дети до 5 лет бесплатно</div>
+<h3 class="offer-title">Семейный пакет</h3>
+<p class="card-description">При размещении семьи с детьми, дети до 5 лет проживают бесплатно</p>
+<p class="contact-detail" style="font-style: italic;">Условия: Без дополнительного места</p>
+</div>
+<div class="offer-card">
+<div class="offer-badge">Скидка 20%</div>
+<h3 class="offer-title">Длительное проживание</h3>
+<p class="card-description">При бронировании от 14 дней получите скидку 20%</p>
+<p class="contact-detail" style="font-style: italic;">Условия: На все типы размещения</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contacts Section -->
+<section id="contacts" class="section">
+<div class="container">
+<div class="section-header">
+<h2 class="section-title">Контакты</h2>
+<p class="section-subtitle">Мы всегда рады вам помочь</p>
+</div>
+<div class="contacts-grid">
+<div class="contact-card">
+<div class="contact-icon">🏢</div>
+<h3 class="contact-type">Офис в Алматы</h3>
+<p class="contact-detail">📍 ул. Досмухамедова, 89, офис 101/1</p>
+<p class="contact-detail">Адрес офиса</p>
+<div class="contact-buttons">
+<a href="tel:+77272927899" class="btn btn-contact">☎️ +7 (727) 292-78-99</a>
+<a href="tel:+77058067833" class="btn btn-contact">📱 +7 705 806 78 33</a>
+<a href="mailto:pelikan-08@mail.ru" class="btn btn-contact">✉️ Написать письмо</a>
+</div>
+</div>
+<div class="contact-card">
+<div class="contact-icon">🏖️</div>
+<h3 class="contact-type">База отдыха</h3>
+<p class="contact-detail">📍 пос. Акши, озеро Алаколь</p>
+<p class="contact-detail">Казахстан</p>
+<div class="contact-buttons">
+<a href="tel:+77283330002" class="btn btn-contact">☎️ +7 (72833) 30002</a>
+<a href="https://maps.google.com/?q=45.955,81.5714" target="_blank" class="btn btn-contact">🗺️ Открыть на карте</a>
+</div>
+</div>
+<div class="contact-card">
+<div class="contact-icon">🚗</div>
+<h3 class="contact-type">Как добраться</h3>
+<p class="contact-detail">🚗 От Алматы: 670 км</p>
+<p class="contact-detail">🚗 От Талдыкоргана: 390 км</p>
+<p class="contact-detail">🚗 От Учарала: 65 км</p>
+<div class="contact-buttons">
+<a href="https://maps.google.com/?q=45.955,81.5714" target="_blank" class="btn btn-contact">🗺️ Построить маршрут</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h3>О нас</h3>
+<p>Центр семейного отдыха "Пеликан" на озере Алаколь - ваш идеальный отдых в окружении природы</p>
+</div>
+<div class="footer-section">
+<h3>Контакты</h3>
+<p>📞 <a href="tel:+77272927899" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">+7 (727) 292-78-99</a></p>
+<p>📧 <a href="mailto:pelikan-08@mail.ru" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">pelikan-08@mail.ru</a></p>
+</div>
+<div class="footer-section">
+<h3>Режим работы</h3>
+<p>Сезон: Июнь - Сентябрь</p>
+<p>Круглосуточно</p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2025 База отдыха "Пеликан". Все права защищены.</p>
+</div>
+</div>
+</footer>
+<script>
+// Плавная прокрутка
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+});
+});
+// Активная ссылка при скролле
+function updateActiveLink() {
+const sections = document.querySelectorAll('.section, .hero');
+const navLinks = document.querySelectorAll('.nav-link');
+let current = '';
+sections.forEach(section => {
+const sectionTop = section.offsetTop;
+if (scrollY >= (sectionTop - 200)) {
+current = section.getAttribute('id');
+}
+});
+navLinks.forEach(link => {
+link.classList.remove('active');
+if (link.getAttribute('href').substring(1) === current) {
+link.classList.add('active');
+}
+});
+}
+window.addEventListener('scroll', updateActiveLink);
+</script>
 </body>
 </html>
-
